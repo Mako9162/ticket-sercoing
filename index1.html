@@ -1,0 +1,95 @@
+<?php
+    require_once("config/conexion.php");
+    if (isset($_POST["enviar"]) and $_POST["enviar"]=="si") {
+        require_once("models/Usuario.php");
+        $usuario= new Usuario();
+        $usuario->login();
+    }
+?>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SolicitudesTI - Acceso</title>
+    <link rel="shortcut icon" href="public/img/Icono.ico">
+    <link rel="stylesheet" href="public/css/master.css">
+</head>
+<body>
+    <div class="login-box">
+        <img class="avatar" src="public/img/Icono.ico" alt="lserco">
+        <h1 id="lbltitulo">Acceso Usuario</h1>
+        <form class="sign-box" action="" method="post" id="login_form">
+            <?php
+                if (isset($_GET["m"])) {
+                    switch ($_GET["m"]) {
+                        case "1";
+                            ?>
+                                <div class="container">
+    <div class="row" id="error-container">
+         <div class="span12">  
+             <div class="alert alert-error">
+                <button type="button" class="close" data-dismiss="alert">×</button>
+                 test error message
+             </div>
+         </div>
+    </div>
+</div>
+                            <?php
+                        break;
+                                
+                        case "2";
+                            ?>
+                                <div class="alert alert-danger alert-icon alert-close alert-dismissible fade in" role="alert">
+							        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+								        <span aria-hidden="true">×</span>
+							        </button>
+							        <i class="font-icon font-icon-warning"></i>
+							        Los campos estan vacíos.
+						        </div>
+                            <?php
+                        break;
+                    }
+                }
+            ?> 
+            <input type="hidden" id="rol_id" name="rol_id" value="1">
+            <label for="username">Usuario</label>
+            <input type="email" id="usu_correo" name="usu_correo" class="form-control" placeholder="e-mail"/>
+
+            <label for="password">Contraseña</label>
+            <input type="password" id="usu_pass" name="usu_pass" class="form-control" placeholder="Contraseña"/> 
+            
+            <input type="hidden" id="enviar" name="enviar" class="form-control" value="si">
+            <input type="submit" value="Acceder">
+
+            <a href="#" id="btnsoporte">Acceso Soporte</a>
+
+        </form>
+    </div>
+    <script src="public/js/lib/jquery/jquery.min.js"></script>
+<script src="public/js/lib/tether/tether.min.js"></script>
+<script src="public/js/lib/bootstrap/bootstrap.min.js"></script>
+<script src="public/js/plugins.js"></script>
+<script type="text/javascript" src="public/js/lib/match-height/jquery.matchHeight.min.js"></script>
+    <script>
+        $(function() {
+            $('.page-center').matchHeight({
+                target: $('html')
+            });
+
+            $(window).resize(function(){
+                setTimeout(function(){
+                    $('.page-center').matchHeight({ remove: true });
+                    $('.page-center').matchHeight({
+                        target: $('html')
+                    });
+                },100);
+            });
+        });
+    </script>
+<script src="public/js/app.js"></script>
+
+<script type="text/javascript" src="index.js"></script>
+</body>
+</html>
