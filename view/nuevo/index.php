@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <html>
     <?php require_once("../mainhead/head.php");?>
-    <title>SolicitudesTI - Nuevo Ticket</title>
+    <title>SoporteTI/title>
 	<link rel="shortcut icon" href="../../public/img/Icono.ico">
 </head>
 <body class="with-side-menu">

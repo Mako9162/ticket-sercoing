@@ -12,7 +12,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
 	<meta http-equiv="x-ua-compatible" content="ie=edge">
-	<title>SolicitudesTI - Acceso</title>
+	<title>SoporteTI - Acceso</title>
     <link rel="shortcut icon" href="public/img/Icono.ico">
 
 	<link href="img/favicon.144x144.png" rel="apple-touch-icon" type="image/png" sizes="144x144">
@@ -80,9 +80,9 @@
                         <div class="float-left reset">
                             <a href="#" id="btnsoporte">Acceso Soporte</a>
                         </div>
-                        <!-- <div class="float-right reset">
-                            <a href="reset-password.html">Cambiar Contraseña</a>
-                        </div> -->
+                        <div class="float-right reset">
+                            <a href="view/reset/reset-password.php">¿Olvido su contraseña?</a>
+                        </div>
                     </div>
                     <input type="hidden" id="enviar" name="enviar" class="form-control" value="si">
                     <button type="submit" class="btn btn-rounded">Acceder</button>

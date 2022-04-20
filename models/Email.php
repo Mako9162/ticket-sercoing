@@ -8,8 +8,8 @@ require_once("../models/Ticket.php");
 require_once("../models/Usuario.php");
 
 class Email extends PHPMailer{
-    protected $gcorreo ='ticket@sercoing.cl';
-    protected $gpass ='DN.3[tW2UxhX#2+';
+    protected $gcorreo ='solicitudes@sercoing.cl';
+    protected $gpass ='*YvAp@5M^JLJrc0I7Y';
 
     public function ticket_abierto($tick_id){
         
