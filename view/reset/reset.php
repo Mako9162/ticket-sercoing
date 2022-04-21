@@ -31,7 +31,7 @@
         $mail->WordWrap = 50;
         $mail->IsHtml(true);
         $mail->msgHTML(true); 
-        $mail->Subject = "Recupera tu contraseña";
+        $mail->Subject = "Actualización de contraseña";
         $cuerpo = file_get_contents('./reset.html');
         //parametros de la plantilla
         $cuerpo = str_replace("passxx", $pass, $cuerpo);
