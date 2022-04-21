@@ -128,8 +128,8 @@ $(document).ready(function(){
 });
 
 function ver(tick_id){
-    window.open('http://localhost:80/ticket-sercoing/view/detalleticket/?ID='+ tick_id +'');
-    // window.open('http://solicitudesti.sercoing.cl/view/detalleticket/?ID='+ tick_id +'');
+    // window.open('http://localhost:80/ticket-sercoing/view/detalleticket/?ID='+ tick_id +'');
+    window.open('http://soporte.sercoing.cl/view/detalleticket/?ID='+ tick_id +'');
 }
 
 function asignar(tick_id){
