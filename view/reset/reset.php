@@ -11,7 +11,7 @@
     
     $usu_correo=$_POST["usu_correo"];
     $pass=rand(1000000,9999999);
-    $conexion->query("UPDATE tm_usuario SET usu_pass='$pass' WHERE usu_correo='$usu_correo'") or die($conexion->error);
+    $conexion->query("UPDATE tm_usuario SET usu_pass='$pass' WHERE usu_correo='$usu_correo' AND est='1'") or die($conexion->error);
     if ($conexion->affected_rows) {
         echo '<script language="javascript">alert("Se ha enviado un correo electronico con la nueva contraseña");window.location.href="../../index.php"</script>';
         $alert=1;
