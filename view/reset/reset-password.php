@@ -38,8 +38,9 @@
 
                         <input type="email" id="usu_correo" name="usu_correo" class="form-control" placeholder="e-mail"/>
                     </div>
-                    <button type="submit" class="btn btn-rounded">Enviar</button>
-                    o <a href="../../index.php">Acceder</a>
+                    <center><button type="submit" class="btn btn-rounded btn-danger">Enviar</button></center>
+                    <center><button type="button" class="btn btn-rounded btn-primary btn-sm" onclick="location.href='../../index.php'">Volver</button></center>
+               
                 </form>
             </div>
             

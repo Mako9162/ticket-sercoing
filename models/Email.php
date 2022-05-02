@@ -39,7 +39,7 @@ class Email extends PHPMailer{
         $this->CharSet = 'UTF-8';
         $this->Encoding = "base64";
         $this->addAddress($correo);
-        $this->addAddress("ticket@sercoing.cl");
+        $this->addAddress("solicitudes@sercoing.cl");
         $this->WordWrap = 50;
         $this->IsHtml(true);
         $this->msgHTML(true); 
@@ -94,7 +94,7 @@ class Email extends PHPMailer{
         $this->CharSet = 'UTF-8';
         $this->Encoding = "base64";
         $this->addAddress($correo);
-        $this->addAddress("ticket@sercoing.cl");
+        $this->addAddress("solicitudes@sercoing.cl");
         $this->addAddress($correoasig);
         $this->WordWrap = 50;
         $this->IsHtml(true);
@@ -151,7 +151,7 @@ class Email extends PHPMailer{
         $this->CharSet = 'UTF-8';
         $this->Encoding = "base64";
         $this->addAddress($correo);
-        $this->addAddress("ticket@sercoing.cl");
+        $this->addAddress("solicitudes@sercoing.cl");
         $this->addAddress($correoasig);
         $this->WordWrap = 50;
         $this->IsHtml(true);
@@ -204,7 +204,7 @@ class Email extends PHPMailer{
         $this->CharSet = 'UTF-8';
         $this->Encoding = "base64";
         $this->addAddress($correo);
-        $this->addAddress("ticket@sercoing.cl");
+        $this->addAddress("solicitudes@sercoing.cl");
         $this->WordWrap = 50;
         $this->IsHtml(true);
         $this->msgHTML(true); 
@@ -252,7 +252,7 @@ class Email extends PHPMailer{
         $this->CharSet = 'UTF-8';
         $this->Encoding = "base64";
         // $this->addAddress($correoasig);
-        $this->addAddress("ticket@sercoing.cl");
+        $this->addAddress("solicitudes@sercoing.cl");
         $this->WordWrap = 50;
         $this->IsHtml(true);
         $this->msgHTML(true); 
