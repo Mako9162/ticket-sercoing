@@ -93,7 +93,7 @@
         public function get_usuario_x_rol(){
             $conectar=parent::conexion();
             parent::set_names();
-            $sql="SELECT * FROM tm_usuario WHERE rol_id='2'AND est='1'";
+            $sql="SELECT * FROM tm_usuario WHERE rol_id='2' OR rol_id='3' AND est='1'";
             $sql=$conectar->prepare($sql);
             $sql->execute();
             return $resultado=$sql->fetchAll();

@@ -19,7 +19,42 @@
             $sql1->execute();
             return $resultado=$sql1->fetchAll(PDO::FETCH_ASSOC);
         }
-
+        public function listar_ticket_xusu_tec($usu_id, $usu_asig){
+            $conectar=parent::conexion();
+            parent::set_names();
+            $sql="SELECT 
+            tm_ticket.tick_id,
+            tm_ticket.usu_id,
+            tm_ticket.cat_id,
+            tm_ticket.cats_id,
+            tm_ticket.cos_id,
+            tm_ticket.tick_titulo,
+            tm_ticket.tick_descrip,
+            tm_ticket.tick_estado,
+            tm_ticket.fech_crea,
+            tm_ticket.usu_asig,
+            tm_ticket.fech_asig,
+            tm_usuario.usu_nom,
+            tm_usuario.usu_ape,
+            tm_categoria.cat_nom,
+            tm_costo.cos_nom,
+            tm_subcategoria.cats_nom
+            FROM 
+            tm_ticket
+            INNER join tm_categoria on tm_ticket.cat_id = tm_categoria.cat_id
+            INNER join tm_costo on tm_ticket.cos_id = tm_costo.cos_id
+            INNER join tm_usuario on tm_ticket.usu_id = tm_usuario.usu_id
+            INNER join tm_subcategoria on tm_ticket.cats_id = tm_subcategoria.cats_id
+            WHERE
+            tm_ticket.est = 1
+            AND tm_usuario.usu_id= ?
+			OR tm_ticket.usu_asig = ?";
+            $sql=$conectar->prepare($sql);
+            $sql->bindValue(1, $usu_id);
+            $sql->bindValue(2, $usu_asig);
+            $sql->execute();
+            return $resultado=$sql->fetchAll();
+        }
         public function listar_ticket_x_usu($usu_id){
             $conectar=parent::conexion();
             parent::set_names();

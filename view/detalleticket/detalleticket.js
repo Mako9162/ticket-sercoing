@@ -137,8 +137,9 @@ $(document).on("click", "#btnenviartk", function(){
             swal("SolicitudesTI", "Registrado correctamente", "success");   
         });
 
-        $.post("../../controller/email.php?op=ticket_noti",{tick_id : tick_id}, function(data){
-        });
+        // $.post("../../controller/email.php?op=ticket_noti",{tick_id : tick_id}, function(data){
+        //     console.log(data);
+        // });
 
     }
 });

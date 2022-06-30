@@ -1,3 +1,7 @@
+<?php
+	require_once("../../config/conexion.php");
+	if (isset($_SESSION["usu_id"])) {
+?>
 <style>
 footer {
   background-color: #fff;
@@ -16,3 +20,8 @@ footer {
   </div>
 </footer>
 
+<?php
+ 	} else {
+		header("Location:".Conectar::ruta()."index.php");
+	}
+ ?>

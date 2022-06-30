@@ -70,7 +70,7 @@ $(document).ready(function(){
                 }
             }     
         }).DataTable(); 
-    }else{
+    }else if (rol_id==2){
         tabla=$('#ticket_data').dataTable({
             "aProcessing": true,
             "aServerSide": true,
@@ -88,7 +88,62 @@ $(document).ready(function(){
             "ajax":{
                 url: '../../controller/ticket.php?op=listar',
                 type : "post",
-                dataType : "json",						
+                dataType : "json",
+                data:{ usu_id : usu_id },						
+                error: function(e){
+                    console.log(e.responseText);	
+                }
+            },
+            "bDestroy": true,
+            "responsive": true,
+            "bInfo":true,
+            "iDisplayLength": 6,
+            "autoWidth": false,
+            "language": {
+                "sProcessing":     "Procesando...",
+                "sLengthMenu":     "Mostrar _MENU_ registros",
+                "sZeroRecords":    "No se encontraron resultados",
+                "sEmptyTable":     "Ningún dato disponible en esta tabla",
+                "sInfo":           "Mostrando un total de _TOTAL_ registros",
+                "sInfoEmpty":      "Mostrando un total de 0 registros",
+                "sInfoFiltered":   "(filtrado de un total de _MAX_ registros)",
+                "sInfoPostFix":    "",
+                "sSearch":         "Buscar:",
+                "sUrl":            "",
+                "sInfoThousands":  ",",
+                "sLoadingRecords": "Cargando...",
+                "oPaginate": {
+                    "sFirst":    "Primero",
+                    "sLast":     "Último",
+                    "sNext":     "Siguiente",
+                    "sPrevious": "Anterior"
+                },
+                "oAria": {
+                    "sSortAscending":  ": Activar para ordenar la columna de manera ascendente",
+                    "sSortDescending": ": Activar para ordenar la columna de manera descendente"
+                }
+            }     
+        }).DataTable(); 
+    }else if (rol_id==3){
+        tabla=$('#ticket_data').dataTable({
+            "aProcessing": true,
+            "aServerSide": true,
+            dom: 'Bfrtip',
+            "searching": true,
+            lengthChange: false,
+            colReorder: true,
+            "order": [[ 0, "desc" ]],
+            buttons: [		          
+                    'copyHtml5',
+                    'excelHtml5',
+                    'csvHtml5',
+                    'pdfHtml5'
+                    ],
+            "ajax":{
+                url: '../../controller/ticket.php?op=listar_tecnico',
+                type : "post",
+                dataType : "json",	
+                data:{ usu_id : usu_id, usu_asig : usu_id },					
                 error: function(e){
                     console.log(e.responseText);	
                 }
@@ -128,8 +183,8 @@ $(document).ready(function(){
 });
 
 function ver(tick_id){
-    // window.open('http://localhost:80/ticket-sercoing/view/detalleticket/?ID='+ tick_id +'');
-    window.open('http://soporte.sercoing.cl/view/detalleticket/?ID='+ tick_id +'');
+    window.open('http://localhost:8081/ticket-sercoing/view/detalleticket/?ID='+ tick_id +'');
+    // window.open('http://soporte.sercoing.cl/view/detalleticket/?ID='+ tick_id +'');
 }
 
 function asignar(tick_id){

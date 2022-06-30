@@ -86,6 +86,51 @@
             echo json_encode($results);
         break;
 
+        case "listar_tecnico":
+            $datos=$ticket->listar_ticket_xusu_tec($_POST["usu_id"], $_POST["usu_asig"]);
+            $data= array();
+            foreach ($datos as $row) {
+                $sub_array = array();
+                $sub_array[] = $row["tick_id"];
+                $sub_array[] = $row["cat_nom"];
+                $sub_array[] = $row["cats_nom"];
+                $sub_array[] = $row["cos_nom"];
+                $sub_array[] = $row["tick_titulo"];
+                if ($row["tick_estado"]=="Abierto") {
+                    $sub_array[] = '<span class="label label-pill label-success">Abierto</span>';
+                } else {
+                    $sub_array[] = '<a onClick="CambiarEstado('.$row["tick_id"].')"><span class="label label-pill label-danger">Cerrado</span></a>';
+                }
+                $sub_array[] = date("d/m/Y H:i:s", strtotime($row["fech_crea"]));
+
+                if ($row["fech_asig"]==null) {
+                    $sub_array[] = '<span class="label label-pill label-danger">Sin Asignar</span>';
+                } else {
+                    $sub_array[] = date("d/m/Y H:i:s", strtotime($row["fech_asig"]));
+                }
+
+                if ($row["usu_asig"]==null) {
+                    $sub_array[] = '<span class="label label-pill label-danger">Sin Asignar</span>';
+                } else {
+                    $datos1=$usuario->get_usuario_x_id($row["usu_asig"]);
+                    foreach ($datos1 as $row1) {
+                        $sub_array[] = $row1["usu_nom"].' '.$row1["usu_ape"];
+                    }
+                }
+                
+
+                $sub_array[] = '<buton type="button" onClick="ver('.$row['tick_id'].');" id="'.$row['tick_id'].'" class="btn btn-inline btn-warning btn-sm ladda-button"><i class="fa fa-eye"></i></buton>';
+                $data[] = $sub_array;
+            }
+
+            $results = array(
+                "sEcho"=>1,
+                "iTotalRecords"=>count($data),
+                "iTotalDisplayRecords"=>count($data),
+                "aaData"=>$data);
+            echo json_encode($results);
+        break;
+
         case "listar":
             $datos=$ticket->listar_ticket();
             $data= array();
@@ -152,8 +197,10 @@
                                             <?php 
                                                 if ($row['rol_id']==1) {
                                                     echo 'Usuario';
-                                                } else {
-                                                    echo 'Soporte';
+                                                } else if ($row['rol_id']==2){
+                                                    echo 'Administrador';
+                                                }else {
+                                                    echo 'Técnico';
                                                 }                  
                                             ?>
                                         </div>

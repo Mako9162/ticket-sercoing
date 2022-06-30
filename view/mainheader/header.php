@@ -1,3 +1,7 @@
+<?php
+	require_once("../../config/conexion.php");
+	if (isset($_SESSION["usu_id"])) {
+?>
 <header class="site-header">
 	    <div class="container-fluid">
 	
@@ -44,3 +48,8 @@
 	        </div><!--.site-header-content-->
 	    </div><!--.container-fluid-->
 </header><!--.site-header-->
+<?php
+ 	} else {
+		header("Location:".Conectar::ruta()."index.php");
+	}
+ ?>

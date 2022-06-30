@@ -6,7 +6,7 @@
 
         protected function Conexion(){
             try {
-                $conectar = $this->dbh = new PDO("mysql:local=localhost;dbname=ticket", "root", "");
+                $conectar = $this->dbh = new PDO("mysql:local=localhost;dbname=tickets", "root", "");
                // $conectar = $this->dbh = new PDO("mysql:local=localhost;dbname=sercoing_solicitudesit", "sercoing_marancibia", "HM]69)pe+o25");
                 return $conectar;
             } catch (Exception $e) {
@@ -20,7 +20,7 @@
         }
 
         public function ruta(){
-            return "http://localhost:80/ticket-sercoing/";
+            return "http://localhost:8081/ticket-sercoing/";
            // return "http://solicitudesti.sercoing.cl/";
         }
     }

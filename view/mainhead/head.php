@@ -1,3 +1,7 @@
+<?php
+	require_once("../../config/conexion.php");
+	if (isset($_SESSION["usu_id"])) {
+?>
 <head lang="en">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
@@ -27,5 +31,9 @@
 
 <link rel="stylesheet" href="../../public/css/main.css">
 
-
+<?php
+ 	} else {
+		header("Location:".Conectar::ruta()."index.php");
+	}
+ ?>
 

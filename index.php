@@ -78,7 +78,7 @@
                     </div>
                     <div class="form-group">
                         <div class="float-left reset">
-                            <a href="#" id="btnsoporte">Acceso Soporte</a>
+                            <a href="#" id="btnsoporte">Administrador</a>
                         </div>
                         <div class="float-right reset">
                             <a href="view/reset/reset-password.php">Recuperar contraseña</a>
