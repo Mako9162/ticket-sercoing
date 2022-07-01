@@ -135,13 +135,15 @@ $(document).on("click", "#btnenviartk", function(){
             listardetalle(tick_id)
             $('#descrip').summernote('reset');
             swal("SolicitudesTI", "Registrado correctamente", "success");   
+            $.post("../../controller/email.php?op=ticket_noti",{tick_id : tick_id}, function(data){
+                console.log(data);
+            });
         });
 
-        // $.post("../../controller/email.php?op=ticket_noti",{tick_id : tick_id}, function(data){
-        //     console.log(data);
-        // });
+        
 
     }
+    
 });
 
 $(document).on("click", "#btncerrartk", function(){

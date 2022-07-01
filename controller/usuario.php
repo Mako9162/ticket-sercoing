@@ -25,9 +25,11 @@
                     $sub_array[] = '<span class="label label-pill label-success">Usuario</span>';
                 } else if ($row["rol_id"]=="2"){
                     $sub_array[] = '<span class="label label-pill label-primary">Administrador</span>';
-                }else {
+                }else if ($row["rol_id"]=="3"){
                     $sub_array[] = '<span class="label label-pill label-info">Técnico</span>';
-                } 
+                } else {
+                    $sub_array[] = '<span class="label label-pill label-dark">Super</span>';
+                }
 
                 $sub_array[] = '<buton type="button" onClick="editar('.$row['usu_id'].');" id="'.$row['usu_id'].'" class="btn btn-inline btn-warning btn-sm ladda-button"><i class="fa fa-edit"></i></buton>';
                 $sub_array[] = '<buton type="button" onClick="eliminar('.$row['usu_id'].');" id="'.$row['usu_id'].'" class="btn btn-inline btn-danger btn-sm ladda-button"><i class="fa fa-trash"></i></buton>';

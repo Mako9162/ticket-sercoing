@@ -43,7 +43,7 @@ class Email extends PHPMailer{
         $this->WordWrap = 50;
         $this->IsHtml(true);
         $this->msgHTML(true); 
-        $this->Subject = "Nuevo Ticket Abierto : ".$id;
+        $this->Subject = "Nuevo Ticket Abierto Nº: ".$id;
         $cuerpo = file_get_contents('../public/nuevo.html');
         //parametros de la plantilla
         $cuerpo = str_replace("xnroticket", $id, $cuerpo);
@@ -99,7 +99,7 @@ class Email extends PHPMailer{
         $this->WordWrap = 50;
         $this->IsHtml(true);
         $this->msgHTML(true); 
-        $this->Subject = "El ticket ".$id." ha sido cerrado";
+        $this->Subject = "El ticket Nº: ".$id.", ha sido cerrado";
         $cuerpo = file_get_contents('../public/cerrado.html');
         //parametros de la plantilla
         $cuerpo = str_replace("xnroticket", $id, $cuerpo);
@@ -156,7 +156,7 @@ class Email extends PHPMailer{
         $this->WordWrap = 50;
         $this->IsHtml(true);
         $this->msgHTML(true); 
-        $this->Subject = "El ticket ".$id." ha sido asignado";
+        $this->Subject = "El ticket Nº: ".$id.", ha sido asignado";
         $cuerpo = file_get_contents('../public/asignar.html');
         //parametros de la plantilla
         $cuerpo = str_replace("xnroticket", $id, $cuerpo);
@@ -208,7 +208,7 @@ class Email extends PHPMailer{
         $this->WordWrap = 50;
         $this->IsHtml(true);
         $this->msgHTML(true); 
-        $this->Subject = "El Ticket ".$id ." ha sido abierto nuevamente";
+        $this->Subject = "El ticket Nº: ".$id .", ha sido abierto nuevamente";
         $cuerpo = file_get_contents('../public/reabierto.html');
         //parametros de la plantilla
         $cuerpo = str_replace("xnroticket", $id, $cuerpo);
@@ -227,53 +227,62 @@ class Email extends PHPMailer{
 
     }
 
-    // public function ticket_noti($tick_id){
+    public function ticket_noti($tick_id){
         
-    //     $ticket = new Ticket();
-    //     $datos = $ticket->reabrir_ticket_noti($tick_id);
-    //     foreach ($datos as $row) {
-    //         $id = $row["tick_id"];
-    //         $usu = $row["usu_nom"].' '.$row["usu_ape"];
-    //         $descrip = $row["tickd_descrip"];
-    //         $fecha = $row["fech_crea"];
-    //     }
+        $ticket = new Ticket();
+        $datos = $ticket->reabrir_ticket_noti($tick_id);
+        foreach ($datos as $row) {
+            $id = $row["tick_id"];
+            $usu = $row["usu_nom"].' '.$row["usu_ape"];
+            $descrip = $row["tickd_descrip"];
+            $fecha = $row["fech_crea"];
+            $usucorreo = $row["usu_correo"];
+        }
 
-    //     // Siempre es igual
-    //     $this->SMTPDebug = 0;
-    //     $this->IsSMTP();
-    //     $this->Host = 'mail.sercoing.cl';
-    //     $this->Port = 587;
-    //     $this->SMTPAuth = true;
-    //     $this->Username = $this->gcorreo;
-    //     $this->Password = $this->gpass;
-    //     $this->From = $this->gcorreo;
-    //     $this->SMTPSecure = 'tls';
-    //     $this->FromName = $this->tu_nombre = "SolicitudesTI - Sercoing";
-    //     $this->CharSet = 'UTF-8';
-    //     $this->Encoding = "base64";
-    //     // $this->addAddress($correoasig);
-    //     $this->addAddress("solicitudes@sercoing.cl");
-    //     $this->WordWrap = 50;
-    //     $this->IsHtml(true);
-    //     $this->msgHTML(true); 
-    //     $this->Subject = "Nuevos comentarios en ticket ".$id;
-    //     $cuerpo = file_get_contents('../public/noti.html');
-    //     //parametros de la plantilla
-    //     $cuerpo = str_replace("xnroticket", $id, $cuerpo);
-    //     $cuerpo = str_replace("lblNomUsu", $usu, $cuerpo);
-    //     $cuerpo = str_replace("lblDesc", $descrip, $cuerpo);
-    //     $cuerpo = str_replace("lblFech", $fecha, $cuerpo);
+        $usuario = new Usuario();
+        $datos1=$usuario->get_usuario_x_id($row["usu_asig"]);
+        foreach ($datos1 as $row1) {
+            $correoasig = $row1["usu_correo"];
+            $usu_asig = $row1["usu_nom"].' '.$row1["usu_ape"];
+        }
+
+        // Siempre es igual
+        $this->SMTPDebug = 0;
+        $this->IsSMTP();
+        $this->Host = 'mail.sercoing.cl';
+        $this->Port = 587;
+        $this->SMTPAuth = true;
+        $this->Username = $this->gcorreo;
+        $this->Password = $this->gpass;
+        $this->From = $this->gcorreo;
+        $this->SMTPSecure = 'tls';
+        $this->FromName = $this->tu_nombre = "SolicitudesTI - Sercoing";
+        $this->CharSet = 'UTF-8';
+        $this->Encoding = "base64";
+        $this->addAddress("solicitudes@sercoing.cl");
+        $this->addAddress($usucorreo);
+        $this->addAddress($correoasig);
+        $this->WordWrap = 50;
+        $this->IsHtml(true);
+        $this->msgHTML(true); 
+        $this->Subject = "Nuevos comentarios en ticket Nº: ".$id;
+        $cuerpo = file_get_contents('../public/noti.html');
+        //parametros de la plantilla
+        $cuerpo = str_replace("xnroticket", $id, $cuerpo);
+        $cuerpo = str_replace("lblNomUsu", $usu, $cuerpo);
+        $cuerpo = str_replace("lblDesc", $descrip, $cuerpo);
+        $cuerpo = str_replace("lblFech", $fecha, $cuerpo);
         
 
-    //     utf8_decode($cuerpo);
+        utf8_decode($cuerpo);
         
-    //     $this->AddEmbeddedImage('../public/imagen.jpg', 'imagen', 'imagen.jpg');
+        $this->AddEmbeddedImage('../public/imagen.jpg', 'imagen', 'imagen.jpg');
 
-    //     $this->Body = $cuerpo;
-    //     $this->AltBody = strip_tags(" Nuevos comentarios");
-    //     return $this->Send();
+        $this->Body = $cuerpo;
+        $this->AltBody = strip_tags(" Nuevos comentarios");
+        return $this->Send();
 
-    // }
+    }
 }
 
 ?>

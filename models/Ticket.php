@@ -317,13 +317,15 @@
             td_ticketdetalle.fech_crea,
             tm_usuario.usu_nom,
             tm_usuario.usu_ape,
+			tm_usuario.usu_correo,
             tm_usuario.rol_id
             FROM 
             td_ticketdetalle
-            INNER join tm_usuario on td_ticketdetalle.usu_id = tm_usuario.usu_id
+            INNER JOIN tm_usuario ON td_ticketdetalle.usu_id = tm_usuario.usu_id
+			INNER JOIN tm_ticket ON td_ticketdetalle.tick_id = tm_ticket.tick_id
             WHERE 
-            tick_id =?
-            ORDER BY tickd_id DESC limit 1";
+            td_ticketdetalle.tick_id =?
+            ORDER BY td_ticketdetalle.tickd_id DESC limit 1";
             $sql=$conectar->prepare($sql);
             $sql->bindValue(1, $tick_id);
             $sql->execute();
