@@ -29,7 +29,7 @@
 			</header>
             <div class="box-typical box-typical-padding">
 			<!-- <iframe src="https://drive.google.com/file/d/15-_AOVCUtdeVvmYBgU7p7GhBKVEHJ5m4/preview"  width="100%" height="600px" allow="autoplay"></iframe> -->
-            	<embed src="Manual de Usuario - SolicitudesTI_V1.0.pdf" type="application/pdf" width="100%" height="600px"  />
+            	<embed src="Manual de Usuario - SolicitudesTI_Rev2.3.pdf" type="application/pdf" width="100%" height="600px"  />
 								
             </div>	
 
