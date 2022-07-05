@@ -107,8 +107,10 @@
 						?>
 							<button type="button" id="btncerrartk" class="btn btn-rounded btn-inline btn-danger float-right">Cerrar Ticket</button>
 						<?php
-							} else {
-		
+							} else if ($_SESSION["rol_id"]==4){
+						?>
+							<button type="button" id="btncerrartk" class="btn btn-rounded btn-inline btn-danger float-right">Cerrar Ticket</button>	
+						<?php		
 						}
  						?>
 					</div>
