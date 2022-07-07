@@ -12,6 +12,7 @@ $(document).ready(function(){
     $('#descrip').summernote({
         height: 250,
         lang: 'es-ES',
+        
         callbacks: {
             onImageUpload: function(image) {
                 console.log("image detect...");

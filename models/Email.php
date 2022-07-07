@@ -236,15 +236,23 @@ class Email extends PHPMailer{
             $usu = $row["usu_nom"].' '.$row["usu_ape"];
             $descrip = $row["tickd_descrip"];
             $fecha = $row["fech_crea"];
-            $usucorreo = $row["usu_correo"];
+            $usucorreoasig = $row["usu_correo"];
         }
 
-        $usuario = new Usuario();
-        $datos1=$usuario->get_usuario_x_id($row["usu_asig"]);
-        foreach ($datos1 as $row1) {
-            $correoasig = $row1["usu_correo"];
-            $usu_asig = $row1["usu_nom"].' '.$row1["usu_ape"];
+        $ticket1 = new Ticket();
+        $datos1 = $ticket1->listar_ticket_x_id($tick_id);
+        foreach ($datos1 as $row) {
+            $id = $row["tick_id"];
+            $correo = $row["usu_correo"];
+
         }
+
+        // $usuario = new Usuario();
+        // $datos1=$usuario->get_usuario_x_id($row["usu_id"]);
+        // foreach ($datos1 as $row1) {
+        //     $correo = $row1["usu_correo"];
+        //     $usu_asig = $row1["usu_nom"].' '.$row1["usu_ape"];
+        // }
 
         // Siempre es igual
         $this->SMTPDebug = 0;
@@ -260,8 +268,8 @@ class Email extends PHPMailer{
         $this->CharSet = 'UTF-8';
         $this->Encoding = "base64";
         $this->addAddress("solicitudes@sercoing.cl");
-        $this->addAddress($usucorreo);
-        $this->addAddress($correoasig);
+        $this->addAddress($usucorreoasig);
+        $this->addAddress($correo);
         $this->WordWrap = 50;
         $this->IsHtml(true);
         $this->msgHTML(true); 

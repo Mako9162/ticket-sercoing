@@ -27,7 +27,7 @@
                     $sub_array[] = '<span class="label label-pill label-primary">Administrador</span>';
                 }else if ($row["rol_id"]=="3"){
                     $sub_array[] = '<span class="label label-pill label-info">Técnico</span>';
-                } else {
+                } else if ($row["rol_id"]=="4"){
                     $sub_array[] = '<span class="label label-pill label-dark">Super</span>';
                 }
 

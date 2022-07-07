@@ -38,7 +38,7 @@
                     <div class="sign-avatar">
                         <img src="public/1.png" alt="" id="imgtipo">
                     </div>
-                    <header class="sign-title" id="lbltitulo">Acceso Usuario</header>
+                    <header class="sign-title" id="lbltitulo">Acceso</header>
                     
                     <?php
                         if (isset($_GET["m"])) {
@@ -77,9 +77,17 @@
                         <input type="password" id="usu_pass" name="usu_pass" class="form-control" placeholder="Contraseña"/>
                     </div>
                     <div class="form-group">
-                        <div class="float-left reset">
+                    <label class="form-label">Selccione su perfil</label>
+                                        <select class="form-control" id="perfil" name="perfil">
+											<option value="1">Usuario</option>
+											<option value="2">Administrador</option>
+											<option value="3">Técnico</option>
+										</select>
+                    </div>
+                    <div class="form-group">
+                        <!-- <div class="float-left reset">
                             <a href="#" id="btnsoporte">Administrador</a>
-                        </div>
+                        </div> -->
                         <div class="float-right reset">
                             <a href="view/reset/reset-password.php">Recuperar contraseña</a>
                         </div>

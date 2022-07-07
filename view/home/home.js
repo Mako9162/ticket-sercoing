@@ -8,17 +8,17 @@ $(document).ready(function(){
     if ($('#rol_idx').val()==1) {
         $.post("../../controller/usuario.php?op=total", {usu_id : usu_id}, function(data){
             data = JSON.parse(data);
-            $('#lbltotal').html(data.TOTAL)
+            $('#lbltotal').html(data.TOTAL);
         });
     
         $.post("../../controller/usuario.php?op=abierto", {usu_id : usu_id}, function(data){
             data = JSON.parse(data);
-            $('#lblabiertos').html(data.TOTAL)
+            $('#lblabiertos').html(data.TOTAL);
          });
     
          $.post("../../controller/usuario.php?op=cerrado", {usu_id : usu_id}, function(data){
             data = JSON.parse(data);
-             $('#lblcerrados').html(data.TOTAL)
+             $('#lblcerrados').html(data.TOTAL);
          });
 
          $.post("../../controller/usuario.php?op=grafico", {usu_id : usu_id}, function(data){
@@ -36,17 +36,17 @@ $(document).ready(function(){
         } else {
         $.post("../../controller/ticket.php?op=total", function(data){
             data = JSON.parse(data);
-            $('#lbltotal').html(data.TOTAL)
+            $('#lbltotal').html(data.TOTAL);
         });
     
         $.post("../../controller/ticket.php?op=abierto", function(data){
             data = JSON.parse(data);
-            $('#lblabiertos').html(data.TOTAL)
+            $('#lblabiertos').html(data.TOTAL);
          });
     
          $.post("../../controller/ticket.php?op=cerrado", function(data){
             data = JSON.parse(data);
-             $('#lblcerrados').html(data.TOTAL)
+             $('#lblcerrados').html(data.TOTAL);
          });
 
          $.post("../../controller/ticket.php?op=grafico", function(data){
@@ -58,7 +58,7 @@ $(document).ready(function(){
                 xkey: 'nom',
                 ykeys: ['total'],
                 labels: ['Total']
-            })
+            });
 
             
         });
